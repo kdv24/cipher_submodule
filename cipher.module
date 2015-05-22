@@ -24,6 +24,7 @@ function cipher_form() {
         '#title' => 'Phrase',
         '#type' => 'textfield',
         '#description' => t('Please enter your sentence to be cipher-ized'),
+        // '#element_validate' => array('element_validate_string'),
         '#required' => TRUE,
     );
 
@@ -67,3 +68,10 @@ function cipher_results() {
     $input = $_SESSION['user_input'];
     return "<strong>Your input was: </strong>" . $input[0];
 }
+
+//validation
+// function element_validate_string($element) {
+//     if(preg_match('/[^a-zA-Z ]/', $element['#value'])) {
+//         form_error($element, t('Only letters and spaces are accepted.'));
+//     }
+// }
