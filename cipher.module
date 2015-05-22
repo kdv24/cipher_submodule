@@ -13,7 +13,7 @@ function cipher_menu() {
         'page callback' => 'cipher_results',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
-    );cd
+    );
     return $items;
 }
 
@@ -62,6 +62,7 @@ function cipher_form_submit($form, &$form_state) {
     $form_state['redirect'] = "cipher-success";
 }
 
+//breaks after adding this code
 function cipher_results() {
     $input = $_SESSION['user_input'];
     return "<strong>Your input was: </strong>" . $input[0];
