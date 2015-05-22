@@ -8,12 +8,12 @@ function cipher_menu() {
         'access callback' => TRUE,
         'type' => MENU_NORMAL_ITEM,
     );
-    $items['results'] = array(
+    $items['cipher-success'] = array(
         'title' => 'Results',
         'page callback' => 'cipher_results',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
-    );
+    );cd
     return $items;
 }
 
@@ -23,25 +23,39 @@ function cipher_form() {
         '#title' => 'Phrase',
         '#type' => 'textfield',
         '#description' => t('Please enter your sentence to be cipher-ized'),
-
+        '#required' => TRUE,
     );
-    //validate positive integer
+
+    //validates positive integer
     $form['shift_value'] = array(
         '#title' => 'Number to shift',
         '#type' => 'textfield',
         '#description' => t('Enter a number.'),
         '#element_validate' => array('element_validate_integer_positive'),
+        '#required' => TRUE,
     );
+
     //validate left or right
     $form['shift_direction'] = array(
         '#title' => 'Shift direction',
         '#type' => 'textfield',
         '#description' => t('Choose whether you would like to cipher to the left or right'),
-
+        '#required' => TRUE,
     );
+
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'Cipher-ize!',
     );
     return $form;
+}
+
+function cipher_form_submit($form, &$form_state) {
+    $phrase = $form_state['values']['phrase'];
+    $shift_value = $form_state['values']['shift_value'];
+    $shift_direction = $form_state['values']['shift_direction'];
+
+    $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
+
+    $form_state['redirect'] = "cipher-success";
 }
