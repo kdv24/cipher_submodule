@@ -17,6 +17,7 @@ function cipher_menu() {
     return $items;
 }
 
+//creates form with input fields and submit button
 function cipher_form() {
     //validate only letters, spaces, and punctutation- change input to lowercase
     $form['phrase'] = array(
@@ -50,6 +51,7 @@ function cipher_form() {
     return $form;
 }
 
+//form submission- dictates what to do with input and where to redirect
 function cipher_form_submit($form, &$form_state) {
     $phrase = $form_state['values']['phrase'];
     $shift_value = $form_state['values']['shift_value'];
@@ -58,4 +60,9 @@ function cipher_form_submit($form, &$form_state) {
     $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
 
     $form_state['redirect'] = "cipher-success";
+}
+
+function cipher_results() {
+    $input = $_SESSION['user_input'];
+    return "<strong>Your input was: </strong>" . $input[0];
 }
