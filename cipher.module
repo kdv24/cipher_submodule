@@ -30,7 +30,7 @@ function cipher_form() {
         '#title' => 'Number to shift',
         '#type' => 'textfield',
         '#description' => t('Enter a number.'),
-
+        '#element_validate' => array('element_validate_integer_positive'),
     );
     //validate left or right
     $form['shift_direction'] = array(
