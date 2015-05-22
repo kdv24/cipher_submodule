@@ -16,3 +16,32 @@ function cipher_menu() {
     );
     return $items;
 }
+
+function cipher_form() {
+    //validate only letters, spaces, and punctutation- change input to lowercase
+    $form['phrase'] = array(
+        '#title' => 'Phrase',
+        '#type' => 'textfield',
+        '#description' => t('Please enter your sentence to be cipher-ized'),
+
+    );
+    //validate positive integer
+    $form['shift_value'] = array(
+        '#title' => 'Number to shift',
+        '#type' => 'textfield',
+        '#description' => t('Enter a number.'),
+
+    );
+    //validate left or right
+    $form['shift_direction'] = array(
+        '#title' => 'Shift direction',
+        '#type' => 'textfield',
+        '#description' => t('Choose whether you would like to cipher to the left or right'),
+
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Cipher-ize!',
+    );
+    return $form;
+}
