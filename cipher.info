@@ -1,0 +1,5 @@
+name = Cipher
+description = Substitution Cipher- shifts all letters in a string a set amount and displays result.
+package = Epicodus Examples
+core = 7.x
+files[]= cipher.module
