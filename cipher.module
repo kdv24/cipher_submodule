@@ -115,8 +115,8 @@ function cipher_form_submit($form, &$form_state) {
         if(in_array($phrase_letter, $alphabet_array)){
             $phrase_letter_index = array_search($phrase_letter, $alphabet_array);
             $new_index = [($phrase_letter_index + $shift_value)];
-                if ($new_index >26){
-                    $new_index = $new_index-26;
+                if ([$new_index] >26){
+                    $new_index = [$new_index] - 26;
                 }
                 $output .= $alphabet_array[$new_index];
            
