@@ -21,7 +21,7 @@ function cipher_menu() {
 function cipher_form() {
     //validate only letters, spaces, and punctutation- change input to lowercase
     $form['phrase'] = array(
-        '#title' => 'Phrase',
+        '#title' => t('Phrase'),
         '#type' => 'textfield',
         '#description' => t('Please enter your sentence to be cipher-ized'),
         '#element_validate' => array('element_validate_string'),
@@ -30,7 +30,7 @@ function cipher_form() {
 
     //validates positive integer
     $form['shift_value'] = array(
-        '#title' => 'Number to shift',
+        '#title' => t('Number to shift'),
         '#type' => 'textfield',
         '#description' => t('Enter a number.'),
         '#element_validate' => array('element_validate_integer_positive'),
@@ -39,7 +39,7 @@ function cipher_form() {
 
     //validate left or right
     $form['shift_direction'] = array(
-        '#title' => 'Shift direction',
+        '#title' => t('Shift direction'),
         '#type' => 'select',
         '#default_value' => ['shift_direction'],
         '#description' => t('Choose whether you would like to cipher to the left or right'),
@@ -52,18 +52,25 @@ function cipher_form() {
 
     $form['submit'] = array(
         '#type' => 'submit',
-        '#value' => 'Cipher-ize!',
+        '#value' => t('Cipher-ize!'),
     );
     return $form;
 }
 
 //form submission- dictates what to do with input and where to redirect
 function cipher_form_submit($form, &$form_state) {
+
+//grabs phrase and creates array of separate letters
     $phrase = $form_state['values']['phrase'];
+    $phrase_array = str_split($phrase);
+
+
+
     $shift_value = $form_state['values']['shift_value'];
     $shift_direction = $form_state['values']['shift_direction'];
 
     $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
+
 
     $form_state['redirect'] = "cipher-success";
 }
