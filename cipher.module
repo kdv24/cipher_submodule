@@ -117,15 +117,9 @@ function cipher_form_submit($form, &$form_state) {
         }
     }
             
-
-
     $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
 
-
-
-
     $form_state['redirect'] = "cipher-success";
-        }
 }
 
 //displays user input
