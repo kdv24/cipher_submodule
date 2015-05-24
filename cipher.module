@@ -60,16 +60,19 @@ function cipher_form() {
 //form submission- dictates what to do with input and where to redirect
 function cipher_form_submit($form, &$form_state) {
 
-//grabs phrase and creates array of separate letters
+//assigns variable names to user input
     $phrase = $form_state['values']['phrase'];
-    $phrase_array = str_split($phrase);
-
-
-
     $shift_value = $form_state['values']['shift_value'];
     $shift_direction = $form_state['values']['shift_direction'];
 
-    $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
+//creates array of separate lowercase letters including spaces and punctuation
+    $phrase = strtolower($phrase);
+    $phrase_array = str_split($phrase);
+
+
+    $_SESSION['user_input'] = [$phrase_array, $shift_value, $shift_direction];
+
+
 
 
     $form_state['redirect'] = "cipher-success";
