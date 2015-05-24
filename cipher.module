@@ -40,8 +40,13 @@ function cipher_form() {
     //validate left or right
     $form['shift_direction'] = array(
         '#title' => 'Shift direction',
-        '#type' => 'textfield',
+        '#type' => 'select',
+        '#default_value' => $element['shift_direction'],
         '#description' => t('Choose whether you would like to cipher to the left or right'),
+        '#options' => array(
+            'right' => 'Right',
+            'left' => 'Left',
+        ),
         '#required' => TRUE,
     );
 
@@ -75,3 +80,5 @@ function cipher_results() {
 //         form_error($element, t('Only letters and spaces are accepted.'));
 //     }
 // }
+
+//function adds if "right" and subtracts if "left"
