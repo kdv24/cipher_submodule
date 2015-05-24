@@ -60,6 +60,39 @@ function cipher_form() {
 //form submission- dictates what to do with input and where to redirect
 function cipher_form_submit($form, &$form_state) {
 
+    $alphabet_array = array[
+    //longhand version
+    //     'a' => 1,
+    //     'b' => 2,
+    //     'c' => 3,
+    //     'd' => 4,
+    //     'e' => 5,
+    //     'f' => 6,
+    //     'g' => 7,
+    //     'h' => 8,
+    //     'i' => 9,
+    //     'j' => 10,
+    //     'k' => 11,
+    //     'l' => 12,
+    //     'm' => 13,
+    //     'n' => 14,
+    //     'o' => 15,
+    //     'p' => 16,
+    //     'q' => 17,
+    //     'r' => 18,
+    //     's' => 19,
+    //     't' => 20,
+    //     'u' => 21,
+    //     'v' => 22,
+    //     'w' => 23,
+    //     'x' => 24,
+    //     'y' => 25,
+    //     'z' => 26,
+    // );
+
+//shorthand version- 
+    a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z];
+
 //assigns variable names to user input
     $phrase = $form_state['values']['phrase'];
     $shift_value = $form_state['values']['shift_value'];
@@ -67,8 +100,23 @@ function cipher_form_submit($form, &$form_state) {
 
 //creates array of separate lowercase letters including spaces and punctuation
     $phrase = strtolower($phrase);
-    // $phrase_array = str_split($phrase);
-    // if()
+    $phrase_array = str_split($phrase);
+
+    $output = '';
+
+
+//gets name of each letter in phrase array
+    foreach($phrase_array as $phrase_letter){
+        //compares the letter in the array to the letter key in alphabet array
+        if(in_array($phrase_letter, $alphabet_array){
+            $letter_index = array_search($phrase_letter, $alphabet_array);
+            $output .= $alphabet_array[($letter_index + $shift_value)];
+        } else {
+            //allows return of spaces and punctutation without conversion
+            $output .= $phrase_letter;
+        }
+    }
+            
 
 
     $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
@@ -77,12 +125,13 @@ function cipher_form_submit($form, &$form_state) {
 
 
     $form_state['redirect'] = "cipher-success";
+        }
 }
 
 //displays user input
 function cipher_results() {
     $input = $_SESSION['user_input'];
-    return "<strong>Your input was: </strong>" . $input[0];
+    return "<strong>Your input was: </strong>" . $input[0] . "and your new sentence is" . $output;
 }
 
 //validation
