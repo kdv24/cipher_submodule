@@ -41,7 +41,7 @@ function cipher_form() {
     $form['shift_direction'] = array(
         '#title' => 'Shift direction',
         '#type' => 'select',
-        '#default_value' => $element['shift_direction'],
+        '#default_value' => ['shift_direction'],
         '#description' => t('Choose whether you would like to cipher to the left or right'),
         '#options' => array(
             'right' => 'Right',
