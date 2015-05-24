@@ -76,7 +76,7 @@ function cipher_results() {
 
 //validation
 function element_validate_string($element) {
-    if(preg_match('/[^a-zA-Z ]/', $element['#value'])) {
+    if(preg_match('/[^a-zA-Z ,.?!\']/', $element['#value'])) {
         form_error($element, t('Only letters and spaces are accepted.'));
     }
 }
