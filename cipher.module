@@ -114,12 +114,8 @@ function cipher_form_submit($form, &$form_state) {
         //compares the letter in the array to the letter key in alphabet array
         if(in_array($phrase_letter, $alphabet_array)){
             $phrase_letter_index = array_search($phrase_letter, $alphabet_array);
-            $new_index = [($phrase_letter_index + $shift_value)];
-                if ([$new_index] >26){
-                    $new_index = [$new_index] - 26;
-                }
-                $output .= $alphabet_array[$new_index];
-           
+
+            $output .= $alphabet_array[($phrase_letter_index + $shift_value) % 26];
         } else {
             //allows return of spaces and punctutation without conversion
             $output .= $phrase_letter;
