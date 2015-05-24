@@ -67,10 +67,11 @@ function cipher_form_submit($form, &$form_state) {
 
 //creates array of separate lowercase letters including spaces and punctuation
     $phrase = strtolower($phrase);
-    $phrase_array = str_split($phrase);
+    // $phrase_array = str_split($phrase);
+    // if()
 
 
-    $_SESSION['user_input'] = [$phrase_array, $shift_value, $shift_direction];
+    $_SESSION['user_input'] = [$phrase, $shift_value, $shift_direction];
 
 
 
