@@ -102,7 +102,7 @@ function cipher_form_submit($form, &$form_state) {
     $phrase = strtolower($phrase);
     $phrase_array = str_split($phrase);
 
-    if (shift_dirction == 'left'){
+    if (shift_direction == 'left'){
         $shift_value = $shift_value * (-1);
     }
 
