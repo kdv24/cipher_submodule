@@ -108,7 +108,7 @@ function cipher_form_submit($form, &$form_state) {
 //gets name of each letter in phrase array
     foreach($phrase_array as $phrase_letter){
         //compares the letter in the array to the letter key in alphabet array
-        if(in_array($phrase_letter, $alphabet_array){
+        if(in_array($phrase_letter, $alphabet_array)){
             $letter_index = array_search($phrase_letter, $alphabet_array);
             $output .= $alphabet_array[($letter_index + $shift_value)];
         } else {
